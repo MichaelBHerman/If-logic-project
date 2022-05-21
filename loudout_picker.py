@@ -1,5 +1,6 @@
 # Call of Duty: Warzone loudout randomizer based on the user's playstyle.
 import random
+import sys
 
 
 
@@ -23,53 +24,71 @@ def get_loadout():
 
     while playagain == True:
         try:
-            choice_a =input("Do you run towards the sound of gunfire?\n>>>").lower()
-            if choice_a == "yes":
+            choice_a =int(input("Do you run towards the sound of gunfire? [1]=yes, [2]=no\n>>>"))
+            
+        except ValueError:
+            print("Invalid input. Please enter [1] for yes or [2] for no.")
+            continue
+        if choice_a == 1:
                 run_and_gun_counter += 1.5
                 team_player_counter += .8
-            if choice_a == "no":
+        if choice_a == 2:
                 cower_and_hide_counter += .3 
-                long_range_counter += .3 
-        except:
-            print("invalid input")         
+                long_range_counter += .3            
 
-        choice_c =input("Do you feel teamwork is critical to your success?\n>>>").lower()
-        if choice_c == "yes":
+        try:
+            choice_c =input("Do you feel teamwork is critical to your success? [1]=yes, [2]=no\n>>>")
+        except ValueError: 
+            print("Invalid input.  Please enter [1] for yes or [2] for no.")   
+            continue
+        if choice_c == 1:
             team_player_counter += 1.4
             long_range_counter += .5
-        if choice_c == "no":
+        if choice_c == 2:
             run_and_gun_counter +=.2
             cower_and_hide_counter +=.3
 
-        choice_d =input("Do you continue to loot while your teammates are actively in a gunfight?\n>>>").lower()
-        if choice_d == "yes":
+        try:
+            choice_d =input("Do you continue to loot while your teammates are actively in a gunfight? [1]=yes, [2]=no\n>>>")
+        except ValueError:
+            print("Invalid input.  Please enter [1] for yes or [2] for no.")  
+            continue  
+        if choice_d == 1:
             cower_and_hide_counter +=1.3
             long_range_counter +=.6
-        if choice_d == "no":
+        if choice_d == 2:
             run_and_gun_counter +=.2
             team_player_counter +=.3  
 
-        choice_f =input("Do you prefer a more tactical approach to a gunfight?\n>>>").lower()
-        if choice_f == "yes":
+        try:
+            choice_f =input("Do you prefer a more tactical approach to a gunfight? [1]=yes, [2]=no\n>>>")
+        except ValueError:
+            print("Invalid input.  Please enter [1] for yes or [2] for no.")
+            continue
+        if choice_f == 1:
             long_range_counter += 1.6
             team_player_counter += .7
 
-        if choice_f == "no":
+        if choice_f == 2:
             run_and_gun_counter +=.3
             cower_and_hide_counter +=.2
 
-        choice_g =input("Do you share your ammunition and armor with your teammates?\n>>>").lower()   
-        if choice_g == "yes":
+        try:
+            choice_g =input("Do you share your ammunition and armor with your teammates? [1]=yes, [2]=no\n>>>")
+        except ValueError:
+            print("Invalid input.  Please enter [1] for yes or [2] for no.") 
+            continue  
+        if choice_g == 1:
             team_player_counter + 1.9
             long_range_counter + .9
-        if choice_g == "no":
+        if choice_g == 2:
             cower_and_hide_counter + .6
-            run_and_gun_counter + .4     
+            run_and_gun_counter + .4   
 
-        print(run_and_gun_counter)
-        print(cower_and_hide_counter)
-        print(long_range_counter)
-        print(team_player_counter)
+        # print(run_and_gun_counter)
+        # print(cower_and_hide_counter)
+        # print(long_range_counter)
+        # print(team_player_counter)
 
         if run_and_gun_counter > long_range_counter and run_and_gun_counter > cower_and_hide_counter and run_and_gun_counter > team_player_counter:
             primary =  random.choice(run_and_gun)
@@ -98,17 +117,24 @@ def get_loadout():
             print("You are a team player.  The best kind of player!  Here is your suggested loadout:\n  ")
             print("Weapon: " + primary)
             print("Equipment: " + equipment)
-        
-        quit = input("\nEnter [q] to quit or [y] to run again: \n>>>").lower()
-        if quit == "q":
+
+        try:
+            quit = int(input("\nEnter [1] to quit or [2] to run again: \n>>>"))
+        except ValueError:
+            print("Invalid input.  Please enter [1] for yes or [2] for no.")
+            continue    
+        if quit == 1:
             playagain = False
             print("quitting......")
+            sys.exit()
             break
-        elif quit =="y": 
+        elif quit ==2: 
             print("Ok, lets go one more time.")
             get_loadout()
         else:
             print("Invalid input")    
+
+get_loadout()            
 
 
 
