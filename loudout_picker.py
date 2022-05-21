@@ -28,43 +28,44 @@ def get_loadout():
             
         except ValueError:
             print("Invalid input. Please enter [1] for yes or [2] for no.")
-            continue
+            
         if choice_a == 1:
-                run_and_gun_counter += 1.5
-                team_player_counter += .8
+            run_and_gun_counter += 1.5
+            team_player_counter += .8
         if choice_a == 2:
-                cower_and_hide_counter += .3 
-                long_range_counter += .3            
+            cower_and_hide_counter += .3 
+            long_range_counter += .3            
 
         try:
-            choice_c =input("Do you feel teamwork is critical to your success? [1]=yes, [2]=no\n>>>")
+            choice_c =int(input("Do you feel teamwork is critical to your success? [1]=yes, [2]=no\n>>>"))
         except ValueError: 
             print("Invalid input.  Please enter [1] for yes or [2] for no.")   
-            continue
+            
         if choice_c == 1:
-            team_player_counter += 1.4
+            team_player_counter += 2
             long_range_counter += .5
         if choice_c == 2:
             run_and_gun_counter +=.2
             cower_and_hide_counter +=.3
 
         try:
-            choice_d =input("Do you continue to loot while your teammates are actively in a gunfight? [1]=yes, [2]=no\n>>>")
+            choice_d =int(input("Do you continue to loot while your teammates are actively in a gunfight? [1]=yes, [2]=no\n>>>"))
         except ValueError:
             print("Invalid input.  Please enter [1] for yes or [2] for no.")  
-            continue  
+            
         if choice_d == 1:
             cower_and_hide_counter +=1.3
             long_range_counter +=.6
+
         if choice_d == 2:
             run_and_gun_counter +=.2
             team_player_counter +=.3  
 
         try:
-            choice_f =input("Do you prefer a more tactical approach to a gunfight? [1]=yes, [2]=no\n>>>")
+            choice_f =int(input("Do you prefer a more tactical approach to a gunfight? [1]=yes, [2]=no\n>>>"))
         except ValueError:
             print("Invalid input.  Please enter [1] for yes or [2] for no.")
-            continue
+            
         if choice_f == 1:
             long_range_counter += 1.6
             team_player_counter += .7
@@ -74,13 +75,14 @@ def get_loadout():
             cower_and_hide_counter +=.2
 
         try:
-            choice_g =input("Do you share your ammunition and armor with your teammates? [1]=yes, [2]=no\n>>>")
+            choice_g =int(input("Do you share your ammunition and armor with your teammates? [1]=yes, [2]=no\n>>>"))
         except ValueError:
             print("Invalid input.  Please enter [1] for yes or [2] for no.") 
-            continue  
+             
         if choice_g == 1:
             team_player_counter + 1.9
             long_range_counter + .9
+
         if choice_g == 2:
             cower_and_hide_counter + .6
             run_and_gun_counter + .4   
