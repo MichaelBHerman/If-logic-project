@@ -3,9 +3,6 @@ import random
 import sys
 
 
-
-
-
 def get_loadout():
     
     run_and_gun = ["Mac10", "PPSH", "Milano", "XM4"]
